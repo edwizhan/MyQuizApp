@@ -14,4 +14,4 @@ Note: The source code in this repository does not include the Firebase API key. 
 
 ## Contributing
 
-If you would like to contribute to the Quiz App, please submit a pull request with your changes. We welcome all contributions, big or small!
+If you would like to contribute to the Quiz App, please submit a pull request with your changes. All contributions are welcome, big or small!
