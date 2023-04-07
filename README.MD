@@ -1,4 +1,4 @@
-# Quiz App built
+# Quiz App
 
 Welcome to the Quiz App! This repository contains the web version of the app. Mobile versions will be available later. 
 
