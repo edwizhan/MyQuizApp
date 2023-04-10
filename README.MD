@@ -1,15 +1,20 @@
 # Quiz App
 
-Welcome to the Quiz App! This repository contains the web version of the app. Mobile versions will be available later. 
+Welcome to the Quiz App! This repository contains both the web and Android versions of the app. An iOS Mobile version will be available soon. 
 
 ## Getting Started
 
-To get started with the Quiz App, follow these steps:
+To get started with the Quiz App web version, follow these steps:
 
 1. Go to the WebApp folder.
 2. Follow the instructions listed in the README file there.
 
-Note: The web version of the Quiz App is the only version currently available. 
+To get started with the Quiz App Android version, follow these steps:
+
+1. Go to the AndroidApp folder.
+2. Download the files and run the app on an emulator or generate the APK for installation on a physical device. 
+
+Enjoy exploring the Quiz App!
 
 ## Contributing
 
