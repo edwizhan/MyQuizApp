@@ -6,12 +6,12 @@ Welcome to the Quiz App! This repository contains both the web and Android versi
 
 To get started with the Quiz App web version, follow these steps:
 
-1. Go to the WebApp folder.
+1. Go to the [WebApp](./WebApp/) folder.
 2. Follow the instructions listed in the README file there.
 
 To get started with the Quiz App Android version, follow these steps:
 
-1. Go to the AndroidApp folder.
+1. Go to the [AndroidApp](./AndroidApp/) folder.
 2. Download the files and run the app on an emulator or generate the APK for installation on a physical device. 
 
 Enjoy exploring the Quiz App!
