@@ -1,6 +1,12 @@
 # Backend
 Backend/
 
+# iOSApp
+iOSApp/
+
+# AndroidApp
+AndroidApp/
+
 # misc
 .DS_Store
 .env
