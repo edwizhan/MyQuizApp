@@ -9,34 +9,36 @@ const ShowScore = ({ numCorrect, totalQuestions, handleAnotherQuiz }) => {
       <div className="scoreContainer">
         <PieChart
           data={[
-            {
-              title: "Incorrect",
-              value: totalQuestions - numCorrect,
-              color: "#CCCCCC",
-            },
+            //{
+              //title: "Incorrect",
+              //value: totalQuestions - numCorrect,
+              //color: "#CCCCCC",
+            //},
             {
               title: "Correct",
               value: numCorrect,
               color: "#0077CC",
+              total: totalQuestions
             },
           ]}
           lineWidth={16}
           rounded
           animate
-          startAngle={90}
+          startAngle={-90}
           label={({ dataEntry }) =>
             dataEntry.title === "Correct" ? `${Math.round(dataEntry.percentage)}%` : ""
           }
           labelStyle={(index) => ({
-            fill: index === 1 ? "#0077cc" : "transparent",
+            fill: index === 0 ? "#0077cc" : "transparent",
             fontSize: "20px",
             fontFamily: "Arial, sans-serif",
             fontWeight: "bold",
           })}
           labelPosition={({ dataEntry }) =>
-            dataEntry.title === "Incorrect" ? 60 : 0
+            dataEntry.title === "Correct" ? 0 : 60
           }
           lengthAngle={360}
+          totalValue={totalQuestions}
           background="#ddd"
         />
       </div>
