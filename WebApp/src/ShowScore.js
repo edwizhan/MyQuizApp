@@ -20,8 +20,10 @@ const ShowScore = ({ numCorrect, totalQuestions, handleAnotherQuiz }) => {
               color: "#0077CC",
             },
           ]}
-          lineWidth={20}
+          lineWidth={16}
+          rounded
           animate
+          startAngle={90}
           label={({ dataEntry }) =>
             dataEntry.title === "Correct" ? `${Math.round(dataEntry.percentage)}%` : ""
           }
