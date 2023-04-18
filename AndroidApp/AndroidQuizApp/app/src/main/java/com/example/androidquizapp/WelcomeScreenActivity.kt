@@ -1,6 +1,8 @@
 package com.example.androidquizapp
 
 import android.content.Intent
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import android.os.Bundle
@@ -23,12 +25,20 @@ class WelcomeScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         questionsRepository.isLoading.observe(this, Observer { isLoading ->
-            binding.startQuizButton.isEnabled = !isLoading
+            binding.startQuizButton.isClickable = !isLoading
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         })
 
+        val buttonClickAnimation = AnimationUtils.loadAnimation(this, R.anim.button_alpha_animation)
+
         binding.startQuizButton.setOnClickListener {
-            val intent = Intent(this, QuizQuestionActivity::class.java)
-            startActivity(intent)
+            it.startAnimation(buttonClickAnimation)
+
+            // Add a small delay before starting the new activity
+            it.postDelayed({
+                val intent = Intent(this, QuizQuestionActivity::class.java)
+                startActivity(intent)
+            }, buttonClickAnimation.duration)
         }
     }
 }

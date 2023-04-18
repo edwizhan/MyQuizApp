@@ -1,6 +1,8 @@
 package com.example.androidquizapp
 
 import android.content.Intent
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.os.Bundle
@@ -44,6 +46,7 @@ class QuizQuestionActivity : AppCompatActivity() {
         // Set up button click listeners
         buttons.forEachIndexed { index, button ->
             button.setOnClickListener {
+                onButtonClick(it)
                 selectButton(index)
                 binding.submitAnswerButton.apply {
                     isEnabled = true
@@ -121,6 +124,11 @@ class QuizQuestionActivity : AppCompatActivity() {
             isEnabled = false
             isSelected = false
         }
+    }
+
+    fun onButtonClick(view: View) {
+        val animation = AnimationUtils.loadAnimation(this, R.anim.button_alpha_animation)
+        view.startAnimation(animation)
     }
 }
 

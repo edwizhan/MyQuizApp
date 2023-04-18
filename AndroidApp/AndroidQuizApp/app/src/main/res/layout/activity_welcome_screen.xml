@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeScreenActivity">
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:indeterminate="true"
+        android:indeterminateTint="#07c"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/start_quiz_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
@@ -33,7 +47,9 @@
         android:elevation="0dp"
         android:text="Start Quiz"
         android:textAllCaps="false"
-        android:textSize="20sp"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif"
+        android:onClick="onButtonClick"
         app:backgroundTint="#07c"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
