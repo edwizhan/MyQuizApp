@@ -15,4 +15,3 @@ Backend/
 .env.test.local
 .env.production.local
 
-iOSApp/iOS_QuizApp
