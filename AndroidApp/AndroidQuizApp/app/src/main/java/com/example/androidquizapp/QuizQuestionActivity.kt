@@ -58,7 +58,6 @@ class QuizQuestionActivity : AppCompatActivity() {
         // Set all buttons to unselected state by default
         resetButtons()
 
-
         binding.submitAnswerButton.setOnClickListener {
             checkAnswerAndUpdateScore()
             if (viewModel.moveToNextQuestion()) {
