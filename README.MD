@@ -22,7 +22,7 @@ To get started with the Quiz App Android version, follow these steps:
 
 To get started with the Quiz App iOS version, follow these steps:
 
-1. Go to the [iOSApp](./iOSApp/iOSQuizApp) folder.
+1. Go to the [iOSApp](./iOSApp/iOS_QuizApp) folder.
 2. Download the files and make changes to connect the app to your own data source, e.g. Firebase Firestore. 
 
 Enjoy exploring the Quiz App!
