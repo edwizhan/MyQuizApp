@@ -3,15 +3,31 @@ import './QuizQuestion.css';
 
 function QuizQuestion({ question, handleAnswer, index, numQuestions }) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [resultMessage, setResultMessage] = useState({ text: '', cssClass: '' });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSelectAnswer = (answerId) => {
-    setSelectedAnswer(answerId);
+    if (!isSubmitted) {
+      setSelectedAnswer(answerId);
+    }
   };
 
   const handleSubmitAnswer = () => {
-    handleAnswer(selectedAnswer);
-    setSelectedAnswer(null);
+    setIsSubmitted(true);
+    const isCorrect = selectedAnswer === question.correctAnswer;
+    setResultMessage({
+      text: isCorrect ? 'Correct!' : 'Oops!',
+      cssClass: isCorrect ? 'correct' : 'incorrect',
+    }); 
+  
+    setTimeout(() => {
+      handleAnswer(selectedAnswer);
+      setSelectedAnswer(null);
+      setResultMessage('');
+      setIsSubmitted(false);
+    }, 1000);
   };
+  
 
   const progress = ((index + 1) / numQuestions) * 100;
 
@@ -35,6 +51,11 @@ function QuizQuestion({ question, handleAnswer, index, numQuestions }) {
       <button className="button" disabled={!selectedAnswer} onClick={handleSubmitAnswer}>
         Submit Answer
       </button>
+      {resultMessage.text && (
+  <div className={`result-message ${resultMessage.cssClass}`}>
+    {resultMessage.text}
+  </div>
+)}
     </div>
   );
 }
