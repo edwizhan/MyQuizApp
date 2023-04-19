@@ -24,7 +24,7 @@ function App() {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else if (currentQuestionIndex === questions.length - 1) {
       // Quiz is over
-      setShowConfetti(true);
+      (numCorrect/questions.length) >= 0.6 ? setShowConfetti(true):setShowConfetti(false)
       setShowScore(true);
     } else {
       // An error occurred
