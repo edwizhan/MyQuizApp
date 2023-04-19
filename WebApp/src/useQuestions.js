@@ -12,7 +12,7 @@ const useQuestions = () => {
     const infoSnap = await getDoc(infoRef);
     const totalQuestions = infoSnap.data().totalQuestions;
 
-    const numQuestions = 3;
+    const numQuestions = 10;
     const randomIds = getRandomIds(numQuestions, totalQuestions);
     const fetchedQuestions = [];
     
