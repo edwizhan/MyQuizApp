@@ -2,7 +2,7 @@
 
 The Quiz App is a hobby project that allows users to take quizzes on coding questions. The app is available on the web, Android, and iOS platforms, and uses Firebase Firestore as the cloud database.
   
-You can visit the web version of the Quiz App at [Here](https://myquizproj-36e0e.web.app). It has already been set up for you, so you can start using it right away.
+You can [visit an online web version of the Quiz App here](https://myquizproj-36e0e.web.app). It has already been set up for you, so you can start using it right away.
 
 ## Background
 

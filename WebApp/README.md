@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To get started with the Quiz App, you have two options:
 
-* Visit the hosted version: You can visit the Quiz App at [Here](https://myquizproj-36e0e.web.app), which is hosted on Firebase. This version has already been set up for you, so you can start using it right away.
+* Visit the hosted version: You can [visit an online web version of the Quiz App here](https://myquizproj-36e0e.web.app), which is hosted on Firebase. This version has already been set up for you, so you can start using it right away.
 
 * Use the source code: Alternatively, you can use the source code in this repository to set up your own instance of the Quiz App. You will need to have Node.js and npm installed. 
 
