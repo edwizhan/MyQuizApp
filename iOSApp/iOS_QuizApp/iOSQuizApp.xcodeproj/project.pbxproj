@@ -30,6 +30,7 @@
 		CFD28F3929ECA35C007C7961 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CFD28F3829ECA35C007C7961 /* FirebaseFirestoreSwift */; };
 		CFD28F3B29ECA3E3007C7961 /* QuestionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD28F3A29ECA3E3007C7961 /* QuestionsRepository.swift */; };
 		CFD28F3D29ECA472007C7961 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD28F3C29ECA472007C7961 /* ActivityIndicator.swift */; };
+		CFFC434429F1090500BF3D70 /* NewProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC434329F1090500BF3D70 /* NewProgressViewStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		CFD28F2929ECA2FA007C7961 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CFD28F3A29ECA3E3007C7961 /* QuestionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsRepository.swift; sourceTree = "<group>"; };
 		CFD28F3C29ECA472007C7961 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		CFFC434329F1090500BF3D70 /* NewProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProgressViewStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				CFD28F3A29ECA3E3007C7961 /* QuestionsRepository.swift */,
 				CFD28F3C29ECA472007C7961 /* ActivityIndicator.swift */,
 				CF73771B29EE6B7D00781A97 /* HexColorExt.swift */,
+				CFFC434329F1090500BF3D70 /* NewProgressViewStyle.swift */,
 			);
 			path = iOSQuizApp;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				CFB070C029E3C84500D143C7 /* ContentView.swift in Sources */,
 				CFB070F629E3CB4F00D143C7 /* QuizViewModel.swift in Sources */,
 				CFD28F2829EC988B007C7961 /* RingView.swift in Sources */,
+				CFFC434429F1090500BF3D70 /* NewProgressViewStyle.swift in Sources */,
 				CFB070BE29E3C84500D143C7 /* iOSQuizAppApp.swift in Sources */,
 				CFB070F429E3CB0000D143C7 /* ScoreView.swift in Sources */,
 				CF73771C29EE6B7D00781A97 /* HexColorExt.swift in Sources */,

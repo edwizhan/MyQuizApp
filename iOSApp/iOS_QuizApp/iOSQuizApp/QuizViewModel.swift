@@ -43,6 +43,9 @@ class QuizViewModel: ObservableObject {
     let questionsRepository = QuestionsRepository()
     @Published private(set) var questions: [Question] = []
     @Published private(set) var isLoading: Bool = false
+    @Published var isQuizFinished: Bool = false
+    @Published var currentQuestionIndex: Int = 0
+    private var numberOfCorrectAnswers: Int = 0
     private var cancellables = Set<AnyCancellable>()
         
     init() {
@@ -91,36 +94,10 @@ class QuizViewModel: ObservableObject {
                 Choice(id: "d", text: "class")
             ],
             correctAnswer: "a"
-        ),
-        Question(
-            id: 4,
-            text: "Which programming language has 'console.log' command?",
-            choices: [
-                Choice(id: "a", text: "JavaScript"),
-                Choice(id: "b", text: "Kotlin"),
-                Choice(id: "c", text: "Swift"),
-                Choice(id: "d", text: "Python")
-            ],
-            correctAnswer: "a"
-        ),
-        Question(
-            id: 5,
-            text: "Which term refers to the process of translating source code into machine code?",
-            choices: [
-                Choice(id: "a", text: "compilation"),
-                Choice(id: "b", text: "interpretation"),
-                Choice(id: "c", text: "execution"),
-                Choice(id: "d", text: "debugging")
-            ],
-            correctAnswer: "a"
         )
     ]
     */
-    
-    @Published var isQuizFinished: Bool = false
-    @Published var currentQuestionIndex: Int = 0
-    private var numberOfCorrectAnswers: Int = 0
-    
+     
     var currentQuestion: Question {
             questions[currentQuestionIndex]
     }
@@ -129,16 +106,19 @@ class QuizViewModel: ObservableObject {
             Int(Double(numberOfCorrectAnswers) / Double(questions.count) * 100)
     }
         
-    func submitAnswer(id: String) {
-        if id == currentQuestion.correctAnswer {
+    func submitAnswer(id: String) -> Bool {
+        let isCorrect = id == currentQuestion.correctAnswer
+        if isCorrect {
             numberOfCorrectAnswers += 1
         }
-        
+
         if currentQuestionIndex + 1 < questions.count {
             currentQuestionIndex += 1
         } else {
             isQuizFinished = true
         }
+
+        return isCorrect
     }
 
     
@@ -149,7 +129,6 @@ class QuizViewModel: ObservableObject {
             isQuizFinished = false
         }
     }
-        
     
     func handleSubmit(selectedAnswer: String) {
         submitAnswer(id: selectedAnswer)

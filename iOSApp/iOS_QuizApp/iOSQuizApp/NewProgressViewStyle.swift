@@ -7,17 +7,30 @@
 
 import SwiftUI
 
-struct NewProgressViewStyle: ProgressViewStyle {
+struct NewProgressView: View {
+    var value: Float
     var height: CGFloat
-    
-    func makeBody(configuration: Configuration) -> some View {
-        ProgressView(configuration)
-            .scaleEffect(x: 1, y: height, anchor: .center)
+    var tint: Color
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: height / 2)
+                    .frame(height: height)
+                    .foregroundColor(Color(.systemGray5))
+                    
+                RoundedRectangle(cornerRadius: height / 2)
+                    .frame(width: CGFloat(value) * geometry.size.width, height: height)
+                    .foregroundColor(tint)
+            }
+        }
+        .frame(height: height) 
     }
 }
 
-struct NewProgressViewStyle_Previews: PreviewProvider {
+struct NewProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        NewProgressViewStyle()
+        NewProgressView(value: 0.5, height: 10, tint: Color(hex: "#0077cc"))
+            .previewLayout(.sizeThatFits)
     }
 }
