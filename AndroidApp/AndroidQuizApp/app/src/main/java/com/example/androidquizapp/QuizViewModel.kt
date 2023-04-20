@@ -75,17 +75,6 @@ class QuizViewModel : ViewModel() {
         correctAnswer = "a"
     )
 
-    private val question4 = Question(
-        id = 4,
-        text = "Which programming language uses 'func' for function?",
-        choices = listOf(
-            Question.Choice(id = "a", text = "JavaScript"),
-            Question.Choice(id = "b", text = "Python"),
-            Question.Choice(id = "c", text = "Swift"),
-            Question.Choice(id = "d", text = "Kotlin")
-        ),
-        correctAnswer = "c"
-    )
     private val questions: List<Question> = listOf(question1, question2, question3, question4)
 
 

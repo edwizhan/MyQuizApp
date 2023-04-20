@@ -14,6 +14,7 @@ import com.github.mikephil.charting.data.PieEntry
 import android.graphics.Color
 
 
+
 class ShowScoreActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShowScoreBinding
 

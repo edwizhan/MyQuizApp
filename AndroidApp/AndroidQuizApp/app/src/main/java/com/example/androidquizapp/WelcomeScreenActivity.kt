@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.example.androidquizapp.databinding.ActivityWelcomeScreenBinding
 import com.google.firebase.FirebaseApp
 
+
 class WelcomeScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWelcomeScreenBinding

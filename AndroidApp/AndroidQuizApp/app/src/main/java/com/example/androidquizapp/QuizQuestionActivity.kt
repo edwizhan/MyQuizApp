@@ -4,15 +4,20 @@ import android.content.Intent
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import android.os.Bundle
-import android.widget.Toast
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.example.androidquizapp.QuizViewModel
 import com.example.androidquizapp.databinding.ActivityQuizQuestionBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class QuizQuestionActivity : AppCompatActivity() {
+class QuizQuestionActivity : AppCompatActivity(), CoroutineScope {
+
+    override val coroutineContext = Dispatchers.Main + Job()
 
     private lateinit var binding: ActivityQuizQuestionBinding
     private lateinit var viewModel: QuizViewModel
@@ -58,17 +63,15 @@ class QuizQuestionActivity : AppCompatActivity() {
         // Set all buttons to unselected state by default
         resetButtons()
 
+
         binding.submitAnswerButton.setOnClickListener {
-            checkAnswerAndUpdateScore()
-            if (viewModel.moveToNextQuestion()) {
-                displayQuestion()
-            } else {
-                val intent = Intent(this, ShowScoreActivity::class.java)
-                intent.putExtra("score", viewModel.score)
-                intent.putExtra("totalQuestions", viewModel.totalQuestions)
-                startActivity(intent)
-                finish()
-            }
+            val animation = AnimationUtils.loadAnimation(this, R.anim.button_alpha_animation)
+            it.startAnimation(animation)
+
+            // Add a small delay before starting the new activity
+            it.postDelayed({
+                checkAnswerAndUpdateScore()
+            }, animation.duration)
         }
     }
 
@@ -89,6 +92,45 @@ class QuizQuestionActivity : AppCompatActivity() {
         binding.progressBar.progress = progressPercent.toInt()
     }
 
+    private fun showMessageAndProceed(isCorrect: Boolean) {
+        // Show the message
+        val message = if (isCorrect) "Correct!" else "Oops!"
+        binding.resultMessage.text = message
+        binding.resultMessage.visibility = View.VISIBLE
+
+        // Set the text color
+        val textColor = if (isCorrect) {
+            ContextCompat.getColor(this, R.color.correct_answer)
+        } else {
+            ContextCompat.getColor(this, R.color.oops_answer)
+        }
+        binding.resultMessage.setTextColor(textColor)
+
+        binding.resultMessage.visibility = View.VISIBLE
+
+        // Disable the buttons
+        buttons.forEach { it.isEnabled = false }
+        binding.submitAnswerButton.isEnabled = false
+
+        // Re-enable the buttons and proceed after 1 second
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(1000)
+            if (viewModel.moveToNextQuestion()) {
+                displayQuestion()
+            } else {
+                val intent = Intent(this@QuizQuestionActivity, ShowScoreActivity::class.java)
+                intent.putExtra("score", viewModel.score)
+                intent.putExtra("totalQuestions", viewModel.totalQuestions)
+                startActivity(intent)
+                finish()
+            }
+
+            binding.resultMessage.visibility = View.GONE
+            buttons.forEach { it.isEnabled = true }
+        }
+    }
+
+
     private fun checkAnswerAndUpdateScore() {
         val selectedAnswer = buttons.indexOfFirst { it.isSelected }
         if (selectedAnswer == -1) {
@@ -100,13 +142,8 @@ class QuizQuestionActivity : AppCompatActivity() {
 
             return
         }
-        if (viewModel.isAnswerCorrect(selectedAnswer)) {
-            // Update the score and show a correct answer message
-            //Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
-        } else {
-            // Show an Oops message
-            //Toast.makeText(this, "Oops.", Toast.LENGTH_SHORT).show()
-        }
+        val isCorrect = viewModel.isAnswerCorrect(selectedAnswer)
+        showMessageAndProceed(isCorrect)
     }
 
     private fun selectButton(index: Int) {

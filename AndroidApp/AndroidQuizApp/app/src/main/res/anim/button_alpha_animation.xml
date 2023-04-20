@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <alpha
-        android:duration="100"
+        android:duration="40"
         android:fromAlpha="1.0"
-        android:toAlpha="0.5" />
+        android:toAlpha="0.7" />
     <alpha
-        android:duration="100"
-        android:fromAlpha="0.5"
+        android:duration="80"
+        android:fromAlpha="0.7"
         android:startOffset="0"
         android:toAlpha="1.0" />
 </set>
